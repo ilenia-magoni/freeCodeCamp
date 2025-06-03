@@ -1,10 +1,9 @@
 {
   "name": "",
   "isUpcomingChange": true,
-  "usesMultifileEditor": true,
-  "hasEditableBoundaries": true,
   "dashedName": "",
-  "order": 42,
+  "blockType": "lecture",
+  "blockLayout": "challenge-list",
   "superBlock": "",
   "challengeOrder": [
     {
