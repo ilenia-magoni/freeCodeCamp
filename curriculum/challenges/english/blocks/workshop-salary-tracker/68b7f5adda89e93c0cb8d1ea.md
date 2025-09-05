@@ -1,7 +1,7 @@
 ---
 id: 68b7f5adda89e93c0cb8d1ea
 title: Step 17
-challengeType: placeholder
+challengeType: 20
 dashedName: step-17
 ---
 
