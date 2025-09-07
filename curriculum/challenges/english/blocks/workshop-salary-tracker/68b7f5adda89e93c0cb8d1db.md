@@ -9,7 +9,7 @@ dashedName: step-2
 
 Now add the `__init__` method to the Employee class. This constructor method should accept `name` and `level` parameters.
 
-For now, just add the method signature without any body code - we'll implement the functionality in the next step.
+For now, just add the method signature without any body code - you'll implement the functionality in the next step.
 
 # --hints--
 
