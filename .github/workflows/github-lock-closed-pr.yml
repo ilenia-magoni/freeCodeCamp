@@ -1,12 +1,14 @@
-name: GitHub - Lock Closed PRs
+name: GitHub - Lock Closed PR
 
 on:
   pull_request_target:
     types: [closed]
 
 permissions:
-  issues: write
-  pull-requests: write
+  issues: read
+          write
+  pull-requests: read
+                 write
 jobs:
   lock:
     name: Lock Closed PR
