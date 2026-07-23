@@ -13,7 +13,8 @@ on:
           - espanol
           - chinese-traditional
           - italian
-          - portuguese
+          - portuguese 
+          - portuguese brazileiro
           - ukrainian
           - japanese
           - german
