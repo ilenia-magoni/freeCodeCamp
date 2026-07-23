@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+      - read
+      - write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.event.workflow_run.head_branch || github.ref }}
