@@ -13,7 +13,7 @@ const { clientLocale } = envData;
   .mockImplementation(({ to, ...rest }: GatsbyLinkProps<undefined | boolean>) =>
     React.createElement('a', { ...rest, href: to })
   
- const withPrefix = vi.fn().mockImplementation((path: string) => {
+ const withPrefix = vi.fn().mockImplementation((path: string) => 
   const pathPrefix = clientLocale === 'english' ? '' : '/' + clientLocale;
   return pathPrefix + path;
 
