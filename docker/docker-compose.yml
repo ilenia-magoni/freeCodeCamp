@@ -1,4 +1,4 @@
-name: freecodecamp-local
+name: freecodecamp-localidade
 
 services:
   db:
@@ -14,7 +14,7 @@ services:
     healthcheck:
       test: ['CMD', 'mongosh', '--eval', "db.adminCommand('ping')"]
       interval: 2s
-      retries: 5
+      retries: 3
 
   setup:
     image: mongo:8.2
