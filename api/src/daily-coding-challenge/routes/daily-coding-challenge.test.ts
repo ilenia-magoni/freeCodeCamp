@@ -1,26 +1,26 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { addDays } from 'date-fns';
+ { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+ { addDays } from 'date-fns';
 
-import { setupServer, superRequest } from '../../../vitest.utils.js';
+ { setupServer, superRequest } from '../../../vitest.utils.js';
 
-function dateToDateParam(date: Date): string {
-  return date.toISOString().split('T')[0] as string;
+ dateToDateParam(date: Date): string {
+         date.toISOString().split('T')[0] as string;
 }
 
-const todayUsCentral = new Date(Date.UTC(2025, 9, 2, 5)); // 2025-10-02 00:00:00 in US Central
-const todayUtcMidnight = new Date(Date.UTC(2025, 9, 2, 0, 0, 0));
+ todayUsCentral = new Date(Date.UTC(2025, 9, 2, 5)); // 2025-10-02 00:00:00 in US Central
+ todayUtcMidnight = new Date(Date.UTC(2025, 9, 2, 0, 0, 0));
 
-const todayDateParam = dateToDateParam(todayUtcMidnight);
+ todayDateParam = dateToDateParam(todayUtcMidnight);
 
-const yesterdayUtcMidnight = addDays(todayUtcMidnight, -1);
+ yesterdayUtcMidnight = addDays(todayUtcMidnight, -1);
 
-const twoDaysAgoUtcMidnight = addDays(todayUtcMidnight, -2);
-const twoDaysAgoDateParam = dateToDateParam(twoDaysAgoUtcMidnight);
+ twoDaysAgoUtcMidnight = addDays(todayUtcMidnight, -2);
+ twoDaysAgoDateParam = dateToDateParam(twoDaysAgoUtcMidnight);
 
-const tomorrowUtcMidnight = addDays(todayUtcMidnight, 1);
-const tomorrowDateParam = dateToDateParam(tomorrowUtcMidnight);
+l tomorrowUtcMidnight = addDays(todayUtcMidnight, 1);
+ tomorrowDateParam = dateToDateParam(tomorrowUtcMidnight);
 
-const yesterdaysChallenge = {
+ yesterdaysChallenge = {
   id: '111111111111111111111111',
   challengeNumber: 1,
   date: yesterdayUtcMidnight,
@@ -36,7 +36,7 @@ const yesterdaysChallenge = {
   }
 };
 
-const todaysChallenge = {
+ todaysChallenge = {
   id: '222222222222222222222222',
   challengeNumber: 2,
   date: todayUtcMidnight,
@@ -52,7 +52,7 @@ const todaysChallenge = {
   }
 };
 
-const tomorrowsChallenge = {
+ tomorrowsChallenge = {
   id: '333333333333333333333333',
   challengeNumber: 3,
   date: tomorrowUtcMidnight,
@@ -68,7 +68,7 @@ const tomorrowsChallenge = {
   }
 };
 
-const mockChallenges = [
+ mockChallenges = [
   tomorrowsChallenge,
   todaysChallenge,
   yesterdaysChallenge
@@ -92,11 +92,11 @@ describe('/daily-coding-challenge', () => {
     });
 
     afterEach(async () => {
-      await fastifyTestInstance.prisma.dailyCodingChallenges.deleteMany();
+             fastifyTestInstance.prisma.dailyCodingChallenges.deleteMany();
     });
 
     it('should return 400 for an invalid date format', async () => {
-      const invalidFormats = [
+             invalidFormats = [
         'invalid-format',
         '2025-07',
         '07-18-2025',
@@ -105,8 +105,8 @@ describe('/daily-coding-challenge', () => {
         '2025-07-8'
       ];
 
-      for (const invalidFormat of invalidFormats) {
-        const res = await superRequest(
+          (const invalidFormat of invalidFormats) {
+              res =       superRequest(
           `/daily-coding-challenge/date/${invalidFormat}`,
           {
             method: 'GET'
@@ -122,14 +122,14 @@ describe('/daily-coding-challenge', () => {
     });
 
     it('should return 404 for a date without a challenge', async () => {
-      const count = vi.fn();
-      const originalSentry = fastifyTestInstance.Sentry;
+            count = vi.fn();
+            originalSentry = fastifyTestInstance.Sentry;
       fastifyTestInstance.Sentry = {
         ...originalSentry,
         metrics: { ...originalSentry.metrics, count }
       };
 
-      const res = await superRequest(
+            res =        superRequest(
         `/daily-coding-challenge/date/${twoDaysAgoDateParam}`,
         {
           method: 'GET'
@@ -149,14 +149,14 @@ describe('/daily-coding-challenge', () => {
     });
 
     it('should return a challenge for a valid date', async () => {
-      const count = vi.fn();
-      const originalSentry = fastifyTestInstance.Sentry;
+            count = vi.fn();
+            originalSentry = fastifyTestInstance.Sentry;
       fastifyTestInstance.Sentry = {
         ...originalSentry,
         metrics: { ...originalSentry.metrics, count }
       };
 
-      const res = await superRequest(
+            res =       superRequest(
         `/daily-coding-challenge/date/${todayDateParam}`,
         {
           method: 'GET'
